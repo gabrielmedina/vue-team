@@ -3,7 +3,7 @@
     <the-loading :loading="isLoading" :error="isError"></the-loading>
 
     <ul class="candidate" :class="{ 'show': !isLoading }">
-      <li class="candidate__item" v-for="(candidate, index) in candidates" :key="index">
+      <li class="candidate__item" v-for="(candidate, i) in candidates" :key="i">
         <the-people :people="candidate" :active="isMember(candidate)" @click="updateTeam(candidate)"></the-people>
       </li>
     </ul>
@@ -11,10 +11,10 @@
 </template>
 
 <script>
-  import ThePeople from '../../components/people'
-  import TheLoading from '../../components/loading'
-
   import axios from 'axios'
+
+  import TheLoading from '../../components/loading'
+  import ThePeople from '../../components/people'
 
   export default {
     name: 'TheTeam',
